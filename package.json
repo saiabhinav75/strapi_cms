@@ -13,6 +13,7 @@
   "dependencies": {
     "@strapi/plugin-cloud": "5.0.0",
     "@strapi/plugin-users-permissions": "5.0.0",
+    "@strapi/provider-upload-aws-s3": "^5.1.0",
     "@strapi/strapi": "5.0.0",
     "better-sqlite3": "9.4.3",
     "knex": "^3.1.0",
@@ -21,10 +22,11 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "strapi-plugin-populate-deep": "^3.0.1",
+    "strapi-plugin-supabase-media-storage": "^2.2.1",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.16.13",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "typescript": "^5"

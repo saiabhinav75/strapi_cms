@@ -23,6 +23,36 @@
         "rca.part-b",
         "rca.part-a"
       ]
+    },
+    "class": {
+      "type": "integer"
+    },
+    "assessment_type": {
+      "type": "enumeration",
+      "enum": [
+        "Baseline",
+        "MonthEnd",
+        "TermEnd",
+        "Practice"
+      ]
+    },
+    "bucket": {
+      "type": "enumeration",
+      "enum": [
+        "E",
+        "T",
+        "P",
+        "none"
+      ],
+      "required": true
+    },
+    "month": {
+      "type": "integer",
+      "required": true
+    },
+    "week": {
+      "type": "integer",
+      "required": true
     }
   }
 }

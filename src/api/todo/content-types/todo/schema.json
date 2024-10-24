@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "todos",
+  "info": {
+    "singularName": "todo",
+    "pluralName": "todos",
+    "displayName": "todo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "todo_id": {
+      "type": "string"
+    },
+    "done": {
+      "type": "boolean"
+    },
+    "mcq": {
+      "type": "dynamiczone",
+      "components": [
+        "block.mcq-question"
+      ]
+    }
+  }
+}
