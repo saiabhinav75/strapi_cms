@@ -12,3 +12,9 @@ npm run deploy
 
 Display all available commands.
 npm run strapi
+
+strapi_cms\node_modules\@strapi\core\dist\services\document-service\utils\unidirectional-relations.js
+
+// Use knex.insert() instead of con.batchInsert()
+
+      await con.insert(newRelations).into(joinTable.name).transacting(trx); 

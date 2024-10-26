@@ -607,6 +607,14 @@ export interface ApiRcaAssessmentRcaAssessment
   attributes: {
     Title: Schema.Attribute.String & Schema.Attribute.Required;
     parts: Schema.Attribute.DynamicZone<['rca.part-b', 'rca.part-a']>;
+    class: Schema.Attribute.Integer;
+    assessment_type: Schema.Attribute.Enumeration<
+      ['Baseline', 'MonthEnd', 'TermEnd', 'Practice']
+    >;
+    bucket: Schema.Attribute.Enumeration<['E', 'T', 'P', 'none']> &
+      Schema.Attribute.Required;
+    month: Schema.Attribute.Integer & Schema.Attribute.Required;
+    week: Schema.Attribute.Integer & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -672,6 +680,34 @@ export interface ApiRcaMapRcaMap extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::rca-map.rca-map'
     >;
+  };
+}
+
+export interface ApiTodoTodo extends Struct.CollectionTypeSchema {
+  collectionName: 'todos';
+  info: {
+    singularName: 'todo';
+    pluralName: 'todos';
+    displayName: 'todo';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    todo_id: Schema.Attribute.String;
+    done: Schema.Attribute.Boolean;
+    mcq: Schema.Attribute.DynamicZone<['block.mcq-question']>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::todo.todo'>;
   };
 }
 
@@ -1097,6 +1133,7 @@ declare module '@strapi/strapi' {
       'api::question-builder.question-builder': ApiQuestionBuilderQuestionBuilder;
       'api::rca-assessment.rca-assessment': ApiRcaAssessmentRcaAssessment;
       'api::rca-map.rca-map': ApiRcaMapRcaMap;
+      'api::todo.todo': ApiTodoTodo;
       'api::vocab-map.vocab-map': ApiVocabMapVocabMap;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
