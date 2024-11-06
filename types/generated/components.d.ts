@@ -169,6 +169,7 @@ export interface RcaPartB extends Struct.ComponentSchema {
   };
   attributes: {
     Instruction: Schema.Attribute.String &
+      Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Read, comprehend the passage and choose the right answer for the following questions'>;
     passage: Schema.Attribute.RichText & Schema.Attribute.Required;
     mcq: Schema.Attribute.Component<'block.mcq-question', true>;
@@ -192,15 +193,28 @@ export interface RcaPartA extends Struct.ComponentSchema {
   };
 }
 
+export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
+  collectionName: 'components_qb_components_mtf_col_a_options';
+  info: {
+    displayName: 'mtf_colA_option';
+    description: '';
+  };
+  attributes: {
+    left_option: Schema.Attribute.String;
+    right_option: Schema.Attribute.Component<'block.option', true>;
+  };
+}
+
 export interface BlockSubjective extends Struct.ComponentSchema {
   collectionName: 'components_block_subjectives';
   info: {
     displayName: 'Subjective';
+    description: '';
   };
   attributes: {
     Question_Type: Schema.Attribute.Enumeration<['VSA', 'SA', 'LA']> &
       Schema.Attribute.Required;
-    Question: Schema.Attribute.RichText & Schema.Attribute.Required;
+    Question: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
 }
 
@@ -255,16 +269,9 @@ export interface BlockMcqQuestion extends Struct.ComponentSchema {
     description: '';
   };
   attributes: {
-    option1: Schema.Attribute.Component<'block.option', false> &
-      Schema.Attribute.Required;
-    option2: Schema.Attribute.Component<'block.option', false> &
-      Schema.Attribute.Required;
-    option3: Schema.Attribute.Component<'block.option', false> &
-      Schema.Attribute.Required;
-    option4: Schema.Attribute.Component<'block.option', false> &
-      Schema.Attribute.Required;
     KPI_Tag: Schema.Attribute.String & Schema.Attribute.Required;
     mcq_question: Schema.Attribute.RichText & Schema.Attribute.Required;
+    options: Schema.Attribute.Component<'block.option', true>;
   };
 }
 
@@ -289,18 +296,6 @@ export interface BlockAudioQuestion extends Struct.ComponentSchema {
   };
 }
 
-export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
-  collectionName: 'components_qb_components_mtf_col_a_options';
-  info: {
-    displayName: 'mtf_colA_option';
-    description: '';
-  };
-  attributes: {
-    left_option: Schema.Attribute.String;
-    right_option: Schema.Attribute.Component<'block.option', true>;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -318,6 +313,7 @@ declare module '@strapi/strapi' {
       'vocab.adverbs': VocabAdverbs;
       'rca.part-b': RcaPartB;
       'rca.part-a': RcaPartA;
+      'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
       'block.subjective': BlockSubjective;
       'block.option': BlockOption;
       'block.mtf': BlockMtf;
@@ -325,7 +321,6 @@ declare module '@strapi/strapi' {
       'block.mcq-question': BlockMcqQuestion;
       'block.fib': BlockFib;
       'block.audio-question': BlockAudioQuestion;
-      'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
     }
   }
 }

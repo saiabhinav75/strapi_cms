@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
     "todo_id": {
       "type": "string"
     },
@@ -26,6 +23,13 @@
       "components": [
         "block.mcq-question"
       ]
+    },
+    "todo_title": {
+      "type": "blocks",
+      "required": true
+    },
+    "todo_title2": {
+      "type": "richtext"
     }
   }
 }

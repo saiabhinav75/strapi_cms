@@ -10,15 +10,15 @@ const config = ({ env }: { env: (key: string) => string }) => ({
       providerOptions: {
         s3Options: {
           credentials:{
-            accessKeyId: '735ca3009617cf622ebaa1ec17033683',
-            secretAccessKey: "e46c44d9aae12b0839ad92b174bf45a241cf4ae5b4b624abda27a65bcfcbcd7a",
+            accessKeyId: env("S3_ACCESS_KEYID"),
+            secretAccessKey: env("S3_SECRET_ACCESS_KEY"),
           },
-          endpoint:"https://zragvlgzbensfgplfuey.supabase.co/storage/v1/s3",
-          baseUrl:'https://zragvlgzbensfgplfuey.supabase.co/storage/v1/object/public',
-          rootPath:'CMS',
-          region:'ap-south-1',
+          endpoint:env("S3_BUCKET_ENDPOINT"),
+          baseUrl:env("SUPABASE_OBJECT_BASEURL"),
+          rootPath:env("S3_BUCKET_NAME"),
+          region:env("S3_REGION"),
           params: {
-            Bucket: 'CMS',
+            Bucket: env("S3_BUCKET_NAME"),
             ACL:'public-read'
           },
         }

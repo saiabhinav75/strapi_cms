@@ -12,15 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Question_Id": {
-      "type": "integer",
-      "required": true,
-      "unique": true
-    },
-    "Subject": {
-      "type": "string",
-      "required": true
-    },
     "Term": {
       "type": "integer",
       "min": 1,
@@ -43,7 +34,7 @@
       "min": 1,
       "max": 10
     },
-    "Question_Type": {
+    "Question": {
       "type": "dynamiczone",
       "components": [
         "block.subjective",
@@ -53,7 +44,50 @@
         "block.fib",
         "block.audio-question"
       ],
+      "required": true,
+      "min": 1,
+      "max": 1
+    },
+    "Hint": {
+      "type": "blocks"
+    },
+    "Explanation": {
+      "type": "blocks"
+    },
+    "Negative_Marks": {
+      "type": "integer",
+      "required": true,
+      "default": 0,
+      "max": 0
+    },
+    "Topic": {
+      "type": "string",
       "required": true
+    },
+    "Subtopic": {
+      "type": "string"
+    },
+    "Stage": {
+      "type": "enumeration",
+      "enum": [
+        "Foundational",
+        "Preparatory",
+        "Middle",
+        "Secondary"
+      ],
+      "default": "Foundational",
+      "required": true
+    },
+    "Subject": {
+      "type": "enumeration",
+      "enum": [
+        "English",
+        "Hindi",
+        "Telugu",
+        "EVS",
+        "Mathematics",
+        "Social Studies"
+      ]
     }
   }
 }

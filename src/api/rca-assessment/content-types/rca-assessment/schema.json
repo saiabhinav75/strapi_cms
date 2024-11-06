@@ -22,10 +22,12 @@
       "components": [
         "rca.part-b",
         "rca.part-a"
-      ]
+      ],
+      "required": true
     },
     "class": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "assessment_type": {
       "type": "enumeration",
@@ -34,7 +36,9 @@
         "MonthEnd",
         "TermEnd",
         "Practice"
-      ]
+      ],
+      "required": true,
+      "default": "Practice"
     },
     "bucket": {
       "type": "enumeration",
@@ -44,15 +48,15 @@
         "P",
         "none"
       ],
-      "required": true
+      "required": false
     },
     "month": {
       "type": "integer",
-      "required": true
+      "required": false
     },
     "week": {
       "type": "integer",
-      "required": true
+      "required": false
     }
   }
 }

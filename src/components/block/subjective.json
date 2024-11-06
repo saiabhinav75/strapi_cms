@@ -1,7 +1,8 @@
 {
   "collectionName": "components_block_subjectives",
   "info": {
-    "displayName": "Subjective"
+    "displayName": "Subjective",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -15,7 +16,7 @@
       "required": true
     },
     "Question": {
-      "type": "richtext",
+      "type": "blocks",
       "required": true
     }
   }

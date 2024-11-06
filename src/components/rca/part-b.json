@@ -8,7 +8,8 @@
   "attributes": {
     "Instruction": {
       "type": "string",
-      "default": "Read, comprehend the passage and choose the right answer for the following questions"
+      "default": "Read, comprehend the passage and choose the right answer for the following questions",
+      "required": true
     },
     "passage": {
       "type": "richtext",

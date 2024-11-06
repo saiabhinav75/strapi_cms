@@ -485,42 +485,6 @@ export interface PluginUsersPermissionsUser
   };
 }
 
-export interface ApiPartPart extends Struct.CollectionTypeSchema {
-  collectionName: 'parts';
-  info: {
-    singularName: 'part';
-    pluralName: 'parts';
-    displayName: 'part';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    instruction: Schema.Attribute.String & Schema.Attribute.Required;
-    items: Schema.Attribute.DynamicZone<
-      [
-        'block.mcq-question',
-        'block.audio-question',
-        'block.fib',
-        'block.mtf',
-        'block.subjective',
-        'block.media-input',
-      ]
-    > &
-      Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::part.part'>;
-  };
-}
-
 export interface ApiQuestionBuilderQuestionBuilder
   extends Struct.CollectionTypeSchema {
   collectionName: 'question_builders';
@@ -534,10 +498,6 @@ export interface ApiQuestionBuilderQuestionBuilder
     draftAndPublish: true;
   };
   attributes: {
-    Question_Id: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    Subject: Schema.Attribute.String & Schema.Attribute.Required;
     Term: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
@@ -566,7 +526,7 @@ export interface ApiQuestionBuilderQuestionBuilder
         },
         number
       >;
-    Question_Type: Schema.Attribute.DynamicZone<
+    Question: Schema.Attribute.DynamicZone<
       [
         'block.subjective',
         'block.mtf',
@@ -576,7 +536,35 @@ export interface ApiQuestionBuilderQuestionBuilder
         'block.audio-question',
       ]
     > &
-      Schema.Attribute.Required;
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 1;
+        },
+        number
+      >;
+    Hint: Schema.Attribute.Blocks;
+    Explanation: Schema.Attribute.Blocks;
+    Negative_Marks: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    Topic: Schema.Attribute.String & Schema.Attribute.Required;
+    Subtopic: Schema.Attribute.String;
+    Stage: Schema.Attribute.Enumeration<
+      ['Foundational', 'Preparatory', 'Middle', 'Secondary']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Foundational'>;
+    Subject: Schema.Attribute.Enumeration<
+      ['English', 'Hindi', 'Telugu', 'EVS', 'Mathematics', 'Social Studies']
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -606,15 +594,17 @@ export interface ApiRcaAssessmentRcaAssessment
   };
   attributes: {
     Title: Schema.Attribute.String & Schema.Attribute.Required;
-    parts: Schema.Attribute.DynamicZone<['rca.part-b', 'rca.part-a']>;
-    class: Schema.Attribute.Integer;
+    parts: Schema.Attribute.DynamicZone<['rca.part-b', 'rca.part-a']> &
+      Schema.Attribute.Required;
+    class: Schema.Attribute.Integer & Schema.Attribute.Required;
     assessment_type: Schema.Attribute.Enumeration<
       ['Baseline', 'MonthEnd', 'TermEnd', 'Practice']
-    >;
-    bucket: Schema.Attribute.Enumeration<['E', 'T', 'P', 'none']> &
-      Schema.Attribute.Required;
-    month: Schema.Attribute.Integer & Schema.Attribute.Required;
-    week: Schema.Attribute.Integer & Schema.Attribute.Required;
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Practice'>;
+    bucket: Schema.Attribute.Enumeration<['E', 'T', 'P', 'none']>;
+    month: Schema.Attribute.Integer;
+    week: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -695,10 +685,11 @@ export interface ApiTodoTodo extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    title: Schema.Attribute.String;
     todo_id: Schema.Attribute.String;
     done: Schema.Attribute.Boolean;
     mcq: Schema.Attribute.DynamicZone<['block.mcq-question']>;
+    todo_title: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    todo_title2: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -1129,7 +1120,6 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::part.part': ApiPartPart;
       'api::question-builder.question-builder': ApiQuestionBuilderQuestionBuilder;
       'api::rca-assessment.rca-assessment': ApiRcaAssessmentRcaAssessment;
       'api::rca-map.rca-map': ApiRcaMapRcaMap;

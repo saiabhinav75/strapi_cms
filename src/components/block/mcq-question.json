@@ -6,30 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "option1": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.option",
-      "required": true
-    },
-    "option2": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.option",
-      "required": true
-    },
-    "option3": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.option",
-      "required": true
-    },
-    "option4": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.option",
-      "required": true
-    },
     "KPI_Tag": {
       "type": "string",
       "required": true
@@ -37,6 +13,11 @@
     "mcq_question": {
       "type": "richtext",
       "required": true
+    },
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.option"
     }
   }
 }
