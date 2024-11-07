@@ -1,0 +1,11 @@
+Changed tsconfig file to import images => https://graffino.com/til/how-to-import-images-in-typescript
+
+
+rename app.example.tsx => app.ts for customization
+https://docs.strapi.io/dev-docs/admin-panel-customization/options#tutorial-videos    # for minor customizations
+
+For Extensions
+https://docs.strapi.io/dev-docs/admin-panel-customization/extension
+
+More info
+https://blog.theodo.com/2022/06/4-ways-to-build-a-custom-strapi-admin-panel/
