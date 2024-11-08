@@ -18,6 +18,10 @@
       "type": "component",
       "repeatable": true,
       "component": "block.option"
+    },
+    "Question_Type": {
+      "type": "string",
+      "default": "MCQ"
     }
   }
 }

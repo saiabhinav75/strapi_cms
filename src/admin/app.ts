@@ -1,6 +1,7 @@
 import type { StrapiApp } from '@strapi/strapi/admin';
 import authLogo from "./extensions/assets/AuthLogo.jpg"
 import HelloWorldButton from './extensions/components/HelloWorldButton';
+import { register } from 'module';
 
 export default {
   config: {
@@ -49,9 +50,16 @@ export default {
       // 'zh',
     ],
   },
+  register(app: StrapiApp){
+    
+  },
   bootstrap(app: StrapiApp) {
     // app.addComponents({name:"Hello World",Component:HelloWorldButton})
     // app.getAdminInjectedComponents("contentManager",)
     console.log(app);
+    app.getPlugin('content-manager').injectComponent('editView', 'right-links', {
+    name: 'Preview',
+    Component: HelloWorldButton,
+    });
   },
 };

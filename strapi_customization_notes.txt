@@ -33,3 +33,6 @@ plugin_name:{ // use kebab casing here for the plugin name
 Step 3
 
 How to use Extensions?
+
+Note:
+Injection zones are defined in the register() lifecycle but components are injected in the bootstrap() lifecycle.

@@ -1,19 +1,22 @@
 // src/admin/extensions/components/HelloWorldButton/index.js
 
 import React from "react";
-import { Button } from "@strapi/design-system";
+import { Button, Main } from "@strapi/design-system";
 import {Bell} from "@strapi/icons";
+import { ComponentType } from "react";
+import { getTranslation } from "../../../plugins/qb_preview/admin/src/utils/getTranslation";
 
-const HelloWorldButton = () => {
+function handleClick(){
+  alert("Clicked")
+}
+
+export default function HelloWorldButton() {
   return (
-    <Button
-      variant="secondary"
-      startIcon={<Bell />}
-      onClick={() => alert("Hello World")}
-    >
-      Hello World
-    </Button>
-  );
-};
+    <Button onClick={handleClick}>Preview</Button>
+  )
+}
 
-export default HelloWorldButton as React.ComponentType;
+
+function useIntl(): { formatMessage: any; } {
+  throw new Error("Function not implemented.");
+}

@@ -8,7 +8,7 @@ const HomePage = () => {
 
   return (
     <Main>
-      <h1>Hello from {formatMessage({ id: getTranslation('plugin.name') })}</h1>
+      <h1>kyodai {formatMessage({ id: getTranslation('plugin.name') })}</h1>
     </Main>
   );
 };

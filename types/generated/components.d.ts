@@ -193,6 +193,18 @@ export interface RcaPartA extends Struct.ComponentSchema {
   };
 }
 
+export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
+  collectionName: 'components_qb_components_mtf_col_a_options';
+  info: {
+    displayName: 'mtf_colA_option';
+    description: '';
+  };
+  attributes: {
+    left_option: Schema.Attribute.String;
+    right_option: Schema.Attribute.Component<'block.option', true>;
+  };
+}
+
 export interface BlockSubjective extends Struct.ComponentSchema {
   collectionName: 'components_block_subjectives';
   info: {
@@ -260,6 +272,7 @@ export interface BlockMcqQuestion extends Struct.ComponentSchema {
     KPI_Tag: Schema.Attribute.String & Schema.Attribute.Required;
     mcq_question: Schema.Attribute.RichText & Schema.Attribute.Required;
     options: Schema.Attribute.Component<'block.option', true>;
+    Question_Type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'MCQ'>;
   };
 }
 
@@ -267,10 +280,12 @@ export interface BlockFib extends Struct.ComponentSchema {
   collectionName: 'components_block_fibs';
   info: {
     displayName: 'FIB';
+    description: '';
   };
   attributes: {
     Question: Schema.Attribute.RichText & Schema.Attribute.Required;
     Answer: Schema.Attribute.RichText & Schema.Attribute.Required;
+    Question_Type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'FIB'>;
   };
 }
 
@@ -281,18 +296,6 @@ export interface BlockAudioQuestion extends Struct.ComponentSchema {
   };
   attributes: {
     audio_question: Schema.Attribute.String;
-  };
-}
-
-export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
-  collectionName: 'components_qb_components_mtf_col_a_options';
-  info: {
-    displayName: 'mtf_colA_option';
-    description: '';
-  };
-  attributes: {
-    left_option: Schema.Attribute.String;
-    right_option: Schema.Attribute.Component<'block.option', true>;
   };
 }
 
@@ -313,6 +316,7 @@ declare module '@strapi/strapi' {
       'vocab.adverbs': VocabAdverbs;
       'rca.part-b': RcaPartB;
       'rca.part-a': RcaPartA;
+      'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
       'block.subjective': BlockSubjective;
       'block.option': BlockOption;
       'block.mtf': BlockMtf;
@@ -320,7 +324,6 @@ declare module '@strapi/strapi' {
       'block.mcq-question': BlockMcqQuestion;
       'block.fib': BlockFib;
       'block.audio-question': BlockAudioQuestion;
-      'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
     }
   }
 }

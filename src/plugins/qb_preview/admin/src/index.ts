@@ -2,6 +2,7 @@ import { getTranslation } from './utils/getTranslation';
 import { PLUGIN_ID } from './pluginId';
 import { Initializer } from './components/Initializer';
 import { PluginIcon } from './components/PluginIcon';
+import { HomePage } from './pages/HomePage';
 
 export default {
   register(app: any) {
@@ -9,7 +10,7 @@ export default {
       to: `plugins/${PLUGIN_ID}`,
       icon: PluginIcon,
       intlLabel: {
-        id: `${PLUGIN_ID}.plugin.name`,
+        id: `${PLUGIN_ID}`,
         defaultMessage: PLUGIN_ID,
       },
       Component: async () => {
@@ -18,6 +19,8 @@ export default {
         return App;
       },
     });
+
+    
 
     app.registerPlugin({
       id: PLUGIN_ID,
@@ -29,7 +32,7 @@ export default {
 
   async registerTrads(app: any) {
     const { locales } = app;
-
+    console.log(locales)
     const importedTranslations = await Promise.all(
       (locales as string[]).map((locale) => {
         return import(`./translations/${locale}.json`)
@@ -50,4 +53,10 @@ export default {
 
     return importedTranslations;
   },
+  bootstrap(app:any){
+    app.getPlugin('content-manager').injectComponent('editView', 'right-links', {
+      name: 'Previews',
+      Component: () => HomePage,
+    });
+  }
 };
