@@ -9,3 +9,27 @@ https://docs.strapi.io/dev-docs/admin-panel-customization/extension
 
 More info
 https://blog.theodo.com/2022/06/4-ways-to-build-a-custom-strapi-admin-panel/
+
+Admin Panel Api
+https://docs.strapi.io/dev-docs/plugins/admin-panel-api#injection-zones-api
+
+
+Final Realization: Create a plugin to add a Component
+
+
+
+Creating a Plugin:
+Step: 1
+Prerequisite: npm install -g yalc
+Create a plugin: npx @strapi/sdk-plugin init my-strapi-plugin
+
+Step: 2 - Link plugin to project
+Add the below code in the config/plugins.ts file, so the plugin is linked to the project
+plugin_name:{ // use kebab casing here for the plugin name
+    enabled:true,
+    resolve:'./src/plugins/plugin_name'
+}
+
+Step 3
+
+How to use Extensions?

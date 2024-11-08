@@ -30,8 +30,11 @@ const config = ({ env }: { env: (key: string) => string }) => ({
         },
       }
     },
+  },
+  'qb-preview':{
+    enabled:true,
+    resolve:'./src/plugins/qb_preview'
   }
-  
 });
 
 export default config;
