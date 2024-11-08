@@ -5,12 +5,15 @@ import { Button, Main } from "@strapi/design-system";
 import {Bell} from "@strapi/icons";
 import { ComponentType } from "react";
 import { getTranslation } from "../../../plugins/qb_preview/admin/src/utils/getTranslation";
+// import { useCMEditViewDataManager } from '@strapi/helper-plugin';
+import Modal from 'react';
 
-function handleClick(){
-  alert("Clicked")
-}
 
 export default function HelloWorldButton() {
+  // const managerData = useCMEditViewDataManager()
+  function handleClick(){
+    alert("managerData")
+  }
   return (
     <Button onClick={handleClick}>Preview</Button>
   )

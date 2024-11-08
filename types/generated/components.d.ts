@@ -161,38 +161,6 @@ export interface VocabAdverbs extends Struct.ComponentSchema {
   };
 }
 
-export interface RcaPartB extends Struct.ComponentSchema {
-  collectionName: 'components_rca_part_bs';
-  info: {
-    displayName: 'Part B';
-    description: '';
-  };
-  attributes: {
-    Instruction: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Read, comprehend the passage and choose the right answer for the following questions'>;
-    passage: Schema.Attribute.RichText & Schema.Attribute.Required;
-    mcq: Schema.Attribute.Component<'block.mcq-question', true>;
-  };
-}
-
-export interface RcaPartA extends Struct.ComponentSchema {
-  collectionName: 'components_rca_part_as';
-  info: {
-    displayName: 'Part A';
-    description: '';
-  };
-  attributes: {
-    Instruction: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Read and record the passage'>;
-    passage: Schema.Attribute.RichText & Schema.Attribute.Required;
-    model_reading: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-  };
-}
-
 export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
   collectionName: 'components_qb_components_mtf_col_a_options';
   info: {
@@ -299,6 +267,38 @@ export interface BlockAudioQuestion extends Struct.ComponentSchema {
   };
 }
 
+export interface RcaPartB extends Struct.ComponentSchema {
+  collectionName: 'components_rca_part_bs';
+  info: {
+    displayName: 'Part B';
+    description: '';
+  };
+  attributes: {
+    Instruction: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Read, comprehend the passage and choose the right answer for the following questions'>;
+    passage: Schema.Attribute.RichText & Schema.Attribute.Required;
+    mcq: Schema.Attribute.Component<'block.mcq-question', true>;
+  };
+}
+
+export interface RcaPartA extends Struct.ComponentSchema {
+  collectionName: 'components_rca_part_as';
+  info: {
+    displayName: 'Part A';
+    description: '';
+  };
+  attributes: {
+    Instruction: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Read and record the passage'>;
+    passage: Schema.Attribute.RichText & Schema.Attribute.Required;
+    model_reading: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -314,8 +314,6 @@ declare module '@strapi/strapi' {
       'vocab.assets': VocabAssets;
       'vocab.assets-and-text': VocabAssetsAndText;
       'vocab.adverbs': VocabAdverbs;
-      'rca.part-b': RcaPartB;
-      'rca.part-a': RcaPartA;
       'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
       'block.subjective': BlockSubjective;
       'block.option': BlockOption;
@@ -324,6 +322,8 @@ declare module '@strapi/strapi' {
       'block.mcq-question': BlockMcqQuestion;
       'block.fib': BlockFib;
       'block.audio-question': BlockAudioQuestion;
+      'rca.part-b': RcaPartB;
+      'rca.part-a': RcaPartA;
     }
   }
 }

@@ -1,7 +1,10 @@
 import type { StrapiApp } from '@strapi/strapi/admin';
 import authLogo from "./extensions/assets/AuthLogo.jpg"
 import HelloWorldButton from './extensions/components/HelloWorldButton';
-import { register } from 'module';
+
+// import { useRouteLoaderData } from 'react-router-dom';
+// import use
+// import { register } from 'module';
 
 export default {
   config: {
@@ -59,7 +62,7 @@ export default {
     console.log(app);
     app.getPlugin('content-manager').injectComponent('editView', 'right-links', {
     name: 'Preview',
-    Component: HelloWorldButton,
+    Component: HelloWorldButton
     });
   },
 };

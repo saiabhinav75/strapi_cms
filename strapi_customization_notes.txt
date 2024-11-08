@@ -36,3 +36,6 @@ How to use Extensions?
 
 Note:
 Injection zones are defined in the register() lifecycle but components are injected in the bootstrap() lifecycle.
+
+re use data on the same page with
+// import { useCMEditViewDataManager } from '@strapi/helper-plugin';
