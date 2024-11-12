@@ -39,3 +39,9 @@ Injection zones are defined in the register() lifecycle but components are injec
 
 re use data on the same page with
 // import { useCMEditViewDataManager } from '@strapi/helper-plugin';
+Do not use strapi/helper-plugin
+- The helper-plugin package is deprecated in Strapi 5 and is no longer directly supported. Strapi v5 has introduced significant changes, including updates to the plugin system and the removal of helper-plugin. Instead, Strapi encourages the use of the new Plugin SDK to build and migrate plugins.
+
+try using: 
+import { unstable_useContentManagerContext } from '@strapi/strapi/admin';
+https://chatgpt.com/share/6732f6f9-c418-800d-8a4d-ebac8f9abdd8
