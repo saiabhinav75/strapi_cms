@@ -6,24 +6,25 @@
   },
   "options": {},
   "attributes": {
-    "option_text": {
-      "type": "string",
-      "required": true
-    },
-    "isAnswer": {
+    "is_answer": {
       "type": "boolean",
       "required": true,
       "default": true
     },
     "media_option": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "option_text": {
+      "type": "blocks",
+      "required": true
     }
   }
 }

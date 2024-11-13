@@ -208,13 +208,12 @@ export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
 export interface BlockTrueFalse extends Struct.ComponentSchema {
   collectionName: 'components_block_true_falses';
   info: {
-    displayName: 'true/false';
+
+    displayName: 'True_False';
   };
   attributes: {
-    question_text: Schema.Attribute.Text & Schema.Attribute.Required;
-    IsAnswer: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
+    Question: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Answer: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
   };
 }
 
@@ -238,13 +237,13 @@ export interface BlockOption extends Struct.ComponentSchema {
     description: '';
   };
   attributes: {
-    option_text: Schema.Attribute.String & Schema.Attribute.Required;
-    isAnswer: Schema.Attribute.Boolean &
+    is_answer: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
     media_option: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    option_text: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
 }
 
@@ -252,16 +251,18 @@ export interface BlockMtf extends Struct.ComponentSchema {
   collectionName: 'components_block_mtfs';
   info: {
     displayName: 'MTF';
+    description: '';
   };
   attributes: {
     options: Schema.Attribute.Component<'qb-components.mtf-col-a-option', true>;
+    Question_Type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'MTF'>;
   };
 }
 
 export interface BlockMediaInput extends Struct.ComponentSchema {
   collectionName: 'components_block_media_inputs';
   info: {
-    displayName: 'media_input';
+    displayName: 'Media_Question';
     icon: 'picture';
     description: '';
   };
@@ -314,35 +315,6 @@ export interface BlockCaseBase extends Struct.ComponentSchema {
   };
 }
 
-export interface BlockAudioQuestion extends Struct.ComponentSchema {
-  collectionName: 'components_block_audio_questions';
-  info: {
-    displayName: 'Audio_Question';
-  };
-  attributes: {
-    audio_question: Schema.Attribute.String;
-  };
-}
-
-export interface BlockAssertionAndReason extends Struct.ComponentSchema {
-  collectionName: 'components_block_assertion_and_reasons';
-  info: {
-    displayName: 'assertion&reason';
-    description: '';
-  };
-  attributes: {
-    Assertion: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    Reasoning: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    options: Schema.Attribute.Component<'block.option', true> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 4;
-        },
-        number
-      >;
-  };
-}
 
 declare module '@strapi/strapi' {
   export module Public {
@@ -371,7 +343,7 @@ declare module '@strapi/strapi' {
       'block.fib': BlockFib;
       'block.case-base': BlockCaseBase;
       'block.audio-question': BlockAudioQuestion;
-      'block.assertion-and-reason': BlockAssertionAndReason;
+
     }
   }
 }

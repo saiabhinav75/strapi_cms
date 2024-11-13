@@ -1,7 +1,8 @@
 {
   "collectionName": "components_block_mtfs",
   "info": {
-    "displayName": "MTF"
+    "displayName": "MTF",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,6 +10,11 @@
       "type": "component",
       "repeatable": true,
       "component": "qb-components.mtf-col-a-option"
+    },
+    "Question_Type": {
+      "type": "string",
+      "default": "MTF",
+      "required": false
     }
   }
 }
