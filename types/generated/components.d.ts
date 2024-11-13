@@ -1,112 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface BlockTrueFalse extends Struct.ComponentSchema {
-  collectionName: 'components_block_true_falses';
-  info: {
-    displayName: 'True_False';
-  };
-  attributes: {
-    Question: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    Answer: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-  };
-}
-
-export interface BlockSubjective extends Struct.ComponentSchema {
-  collectionName: 'components_block_subjectives';
-  info: {
-    displayName: 'Subjective';
-    description: '';
-  };
-  attributes: {
-    Question_Type: Schema.Attribute.Enumeration<['VSA', 'SA', 'LA']> &
-      Schema.Attribute.Required;
-    Question: Schema.Attribute.Blocks & Schema.Attribute.Required;
-  };
-}
-
-export interface BlockOption extends Struct.ComponentSchema {
-  collectionName: 'components_block_options';
-  info: {
-    displayName: 'Option';
-    description: '';
-  };
-  attributes: {
-    option_text: Schema.Attribute.String & Schema.Attribute.Required;
-    isAnswer: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    media_option: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-  };
-}
-
-export interface BlockMtf extends Struct.ComponentSchema {
-  collectionName: 'components_block_mtfs';
-  info: {
-    displayName: 'MTF';
-    description: '';
-  };
-  attributes: {
-    options: Schema.Attribute.Component<'qb-components.mtf-col-a-option', true>;
-    Question_Type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'MTF'>;
-  };
-}
-
-export interface BlockMediaInput extends Struct.ComponentSchema {
-  collectionName: 'components_block_media_inputs';
-  info: {
-    displayName: 'Media_Question';
-    icon: 'picture';
-    description: '';
-  };
-  attributes: {
-    media_file: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    > &
-      Schema.Attribute.Required;
-    description: Schema.Attribute.String;
-  };
-}
-
-export interface BlockMcqQuestion extends Struct.ComponentSchema {
-  collectionName: 'components_block_mcq_questions';
-  info: {
-    displayName: 'MCQ';
-    description: '';
-  };
-  attributes: {
-    KPI_Tag: Schema.Attribute.String & Schema.Attribute.Required;
-    mcq_question: Schema.Attribute.RichText & Schema.Attribute.Required;
-    options: Schema.Attribute.Component<'block.option', true>;
-    Question_Type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'MCQ'>;
-  };
-}
-
-export interface BlockFib extends Struct.ComponentSchema {
-  collectionName: 'components_block_fibs';
-  info: {
-    displayName: 'FIB';
-    description: '';
-  };
-  attributes: {
-    Question: Schema.Attribute.RichText & Schema.Attribute.Required;
-    Answer: Schema.Attribute.RichText & Schema.Attribute.Required;
-    Question_Type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'FIB'>;
-  };
-}
-
-export interface BlockAudioQuestion extends Struct.ComponentSchema {
-  collectionName: 'components_block_audio_questions';
-  info: {
-    displayName: 'Audio_Question';
-  };
-  attributes: {
-    audio_question: Schema.Attribute.String;
-  };
-}
-
 export interface VocabWord extends Struct.ComponentSchema {
   collectionName: 'components_vocab_words';
   info: {
@@ -268,18 +161,6 @@ export interface VocabAdverbs extends Struct.ComponentSchema {
   };
 }
 
-export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
-  collectionName: 'components_qb_components_mtf_col_a_options';
-  info: {
-    displayName: 'mtf_colA_option';
-    description: '';
-  };
-  attributes: {
-    left_option: Schema.Attribute.String;
-    right_option: Schema.Attribute.Component<'block.option', true>;
-  };
-}
-
 export interface RcaPartB extends Struct.ComponentSchema {
   collectionName: 'components_rca_part_bs';
   info: {
@@ -312,17 +193,128 @@ export interface RcaPartA extends Struct.ComponentSchema {
   };
 }
 
+export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
+  collectionName: 'components_qb_components_mtf_col_a_options';
+  info: {
+    displayName: 'mtf_colA_option';
+    description: '';
+  };
+  attributes: {
+    left_option: Schema.Attribute.String;
+    right_option: Schema.Attribute.Component<'block.option', true>;
+  };
+}
+
+export interface BlockTrueFalse extends Struct.ComponentSchema {
+  collectionName: 'components_block_true_falses';
+  info: {
+    displayName: 'True_False';
+  };
+  attributes: {
+    Question: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Answer: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+  };
+}
+
+export interface BlockSubjective extends Struct.ComponentSchema {
+  collectionName: 'components_block_subjectives';
+  info: {
+    displayName: 'Subjective';
+    description: '';
+  };
+  attributes: {
+    Question_Type: Schema.Attribute.Enumeration<['VSA', 'SA', 'LA']> &
+      Schema.Attribute.Required;
+    Question: Schema.Attribute.Blocks & Schema.Attribute.Required;
+  };
+}
+
+export interface BlockOption extends Struct.ComponentSchema {
+  collectionName: 'components_block_options';
+  info: {
+    displayName: 'Option';
+    description: '';
+  };
+  attributes: {
+    is_answer: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    media_option: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    option_text: Schema.Attribute.Blocks & Schema.Attribute.Required;
+  };
+}
+
+export interface BlockMtf extends Struct.ComponentSchema {
+  collectionName: 'components_block_mtfs';
+  info: {
+    displayName: 'MTF';
+    description: '';
+  };
+  attributes: {
+    options: Schema.Attribute.Component<'qb-components.mtf-col-a-option', true>;
+    Question_Type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'MTF'>;
+  };
+}
+
+export interface BlockMediaInput extends Struct.ComponentSchema {
+  collectionName: 'components_block_media_inputs';
+  info: {
+    displayName: 'Media_Question';
+    icon: 'picture';
+    description: '';
+  };
+  attributes: {
+    media_file: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.Required;
+    description: Schema.Attribute.String;
+  };
+}
+
+export interface BlockMcqQuestion extends Struct.ComponentSchema {
+  collectionName: 'components_block_mcq_questions';
+  info: {
+    displayName: 'MCQ';
+    description: '';
+  };
+  attributes: {
+    KPI_Tag: Schema.Attribute.String & Schema.Attribute.Required;
+    mcq_question: Schema.Attribute.RichText & Schema.Attribute.Required;
+    options: Schema.Attribute.Component<'block.option', true>;
+    Question_Type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'MCQ'>;
+  };
+}
+
+export interface BlockFib extends Struct.ComponentSchema {
+  collectionName: 'components_block_fibs';
+  info: {
+    displayName: 'FIB';
+    description: '';
+  };
+  attributes: {
+    Question: Schema.Attribute.RichText & Schema.Attribute.Required;
+    Answer: Schema.Attribute.RichText & Schema.Attribute.Required;
+    Question_Type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'FIB'>;
+  };
+}
+
+export interface BlockAudioQuestion extends Struct.ComponentSchema {
+  collectionName: 'components_block_audio_questions';
+  info: {
+    displayName: 'Audio_Question';
+  };
+  attributes: {
+    audio_question: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'block.true-false': BlockTrueFalse;
-      'block.subjective': BlockSubjective;
-      'block.option': BlockOption;
-      'block.mtf': BlockMtf;
-      'block.media-input': BlockMediaInput;
-      'block.mcq-question': BlockMcqQuestion;
-      'block.fib': BlockFib;
-      'block.audio-question': BlockAudioQuestion;
       'vocab.word': VocabWord;
       'vocab.voca-common': VocabVocaCommon;
       'vocab.synonymantonyms': VocabSynonymantonyms;
@@ -335,9 +327,17 @@ declare module '@strapi/strapi' {
       'vocab.assets': VocabAssets;
       'vocab.assets-and-text': VocabAssetsAndText;
       'vocab.adverbs': VocabAdverbs;
-      'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
       'rca.part-b': RcaPartB;
       'rca.part-a': RcaPartA;
+      'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
+      'block.true-false': BlockTrueFalse;
+      'block.subjective': BlockSubjective;
+      'block.option': BlockOption;
+      'block.mtf': BlockMtf;
+      'block.media-input': BlockMediaInput;
+      'block.mcq-question': BlockMcqQuestion;
+      'block.fib': BlockFib;
+      'block.audio-question': BlockAudioQuestion;
     }
   }
 }
