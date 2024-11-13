@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_block_case_bases",
+  "info": {
+    "displayName": "Case_Base",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Case_Text": {
+      "type": "text",
+      "required": true
+    },
+    "mcq": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.mcq-question"
+    }
+  }
+}

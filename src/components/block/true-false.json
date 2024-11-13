@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_block_true_falses",
+  "info": {
+    "displayName": "true/false"
+  },
+  "options": {},
+  "attributes": {
+    "question_text": {
+      "type": "text",
+      "required": true
+    },
+    "IsAnswer": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
