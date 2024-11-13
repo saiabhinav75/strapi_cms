@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_block_assertion_and_reasons",
+  "info": {
+    "displayName": "assertion&reason",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Assertion": {
+      "type": "blocks",
+      "required": true
+    },
+    "Reasoning": {
+      "type": "blocks",
+      "required": true
+    },
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.option",
+      "required": true,
+      "min": 4
+    }
+  }
+}

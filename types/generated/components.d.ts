@@ -208,6 +208,7 @@ export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
 export interface BlockTrueFalse extends Struct.ComponentSchema {
   collectionName: 'components_block_true_falses';
   info: {
+
     displayName: 'True_False';
   };
   attributes: {
@@ -302,15 +303,18 @@ export interface BlockFib extends Struct.ComponentSchema {
   };
 }
 
-export interface BlockAudioQuestion extends Struct.ComponentSchema {
-  collectionName: 'components_block_audio_questions';
+export interface BlockCaseBase extends Struct.ComponentSchema {
+  collectionName: 'components_block_case_bases';
   info: {
-    displayName: 'Audio_Question';
+    displayName: 'Case_Base';
+    description: '';
   };
   attributes: {
-    audio_question: Schema.Attribute.String;
+    Case_Text: Schema.Attribute.Text & Schema.Attribute.Required;
+    mcq: Schema.Attribute.Component<'block.mcq-question', true>;
   };
 }
+
 
 declare module '@strapi/strapi' {
   export module Public {
@@ -337,7 +341,9 @@ declare module '@strapi/strapi' {
       'block.media-input': BlockMediaInput;
       'block.mcq-question': BlockMcqQuestion;
       'block.fib': BlockFib;
+      'block.case-base': BlockCaseBase;
       'block.audio-question': BlockAudioQuestion;
+
     }
   }
 }
