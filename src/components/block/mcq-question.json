@@ -6,14 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "KPI_Tag": {
-      "type": "string",
-      "required": true
-    },
-    "mcq_question": {
-      "type": "richtext",
-      "required": true
-    },
     "options": {
       "type": "component",
       "repeatable": true,
@@ -22,6 +14,10 @@
     "Question_Type": {
       "type": "string",
       "default": "MCQ"
+    },
+    "question_text": {
+      "type": "blocks",
+      "required": true
     }
   }
 }

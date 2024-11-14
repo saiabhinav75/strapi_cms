@@ -208,7 +208,6 @@ export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
 export interface BlockTrueFalse extends Struct.ComponentSchema {
   collectionName: 'components_block_true_falses';
   info: {
-
     displayName: 'True_False';
   };
   attributes: {
@@ -283,10 +282,9 @@ export interface BlockMcqQuestion extends Struct.ComponentSchema {
     description: '';
   };
   attributes: {
-    KPI_Tag: Schema.Attribute.String & Schema.Attribute.Required;
-    mcq_question: Schema.Attribute.RichText & Schema.Attribute.Required;
     options: Schema.Attribute.Component<'block.option', true>;
     Question_Type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'MCQ'>;
+    question_text: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
 }
 
@@ -315,6 +313,37 @@ export interface BlockCaseBase extends Struct.ComponentSchema {
   };
 }
 
+export interface BlockAudioQuestion extends Struct.ComponentSchema {
+  collectionName: 'components_block_audio_questions';
+  info: {
+    displayName: 'Audio_Question';
+  };
+  attributes: {
+    audio_question: Schema.Attribute.String;
+  };
+}
+
+export interface BlockAssertionAndReason extends Struct.ComponentSchema {
+  collectionName: 'components_block_assertion_and_reasons';
+  info: {
+    displayName: 'Assertion_Reason';
+    description: '';
+  };
+  attributes: {
+    Assertion: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Reasoning: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    options: Schema.Attribute.Component<'block.option', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 4;
+        },
+        number
+      >;
+    Question_Type: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'AssesrtionReason'>;
+  };
+}
 
 declare module '@strapi/strapi' {
   export module Public {
@@ -343,7 +372,7 @@ declare module '@strapi/strapi' {
       'block.fib': BlockFib;
       'block.case-base': BlockCaseBase;
       'block.audio-question': BlockAudioQuestion;
-
+      'block.assertion-and-reason': BlockAssertionAndReason;
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "collectionName": "components_block_assertion_and_reasons",
   "info": {
-    "displayName": "assertion&reason",
+    "displayName": "Assertion_Reason",
     "description": ""
   },
   "options": {},
@@ -20,6 +20,10 @@
       "component": "block.option",
       "required": true,
       "min": 4
+    },
+    "Question_Type": {
+      "type": "string",
+      "default": "AssesrtionReason"
     }
   }
 }

@@ -30,6 +30,16 @@
     },
     "todo_title2": {
       "type": "richtext"
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

@@ -690,6 +690,7 @@ export interface ApiTodoTodo extends Struct.CollectionTypeSchema {
     mcq: Schema.Attribute.DynamicZone<['block.mcq-question']>;
     todo_title: Schema.Attribute.Blocks & Schema.Attribute.Required;
     todo_title2: Schema.Attribute.RichText;
+    media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
