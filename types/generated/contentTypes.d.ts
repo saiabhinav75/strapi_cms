@@ -533,7 +533,9 @@ export interface ApiQuestionBuilderQuestionBuilder
         'block.media-input',
         'block.mcq-question',
         'block.fib',
-        'block.audio-question',
+        'block.true-false',
+        'block.case-base',
+        'block.assertion-and-reason',
       ]
     > &
       Schema.Attribute.Required &

@@ -45,3 +45,6 @@ Do not use strapi/helper-plugin
 try using: 
 import { unstable_useContentManagerContext } from '@strapi/strapi/admin';
 https://chatgpt.com/share/6732f6f9-c418-800d-8a4d-ebac8f9abdd8
+
+Adding validation to collection types
+https://github.com/strapi/strapi/issues/3309

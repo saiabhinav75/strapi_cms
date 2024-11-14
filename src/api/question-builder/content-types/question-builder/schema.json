@@ -42,7 +42,9 @@
         "block.media-input",
         "block.mcq-question",
         "block.fib",
-        "block.audio-question"
+        "block.true-false",
+        "block.case-base",
+        "block.assertion-and-reason"
       ],
       "required": true,
       "min": 1,
