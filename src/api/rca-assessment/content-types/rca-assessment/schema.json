@@ -19,10 +19,7 @@
     },
     "parts": {
       "type": "dynamiczone",
-      "components": [
-        "rca.part-b",
-        "rca.part-a"
-      ],
+      "components": [],
       "required": true
     },
     "class": {

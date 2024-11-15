@@ -600,8 +600,7 @@ export interface ApiRcaAssessmentRcaAssessment
   };
   attributes: {
     Title: Schema.Attribute.String & Schema.Attribute.Required;
-    parts: Schema.Attribute.DynamicZone<['rca.part-b', 'rca.part-a']> &
-      Schema.Attribute.Required;
+    parts: Schema.Attribute.DynamicZone<[]> & Schema.Attribute.Required;
     class: Schema.Attribute.Integer & Schema.Attribute.Required;
     assessment_type: Schema.Attribute.Enumeration<
       ['Baseline', 'MonthEnd', 'TermEnd', 'Practice']
