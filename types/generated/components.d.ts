@@ -161,6 +161,25 @@ export interface VocabAdverbs extends Struct.ComponentSchema {
   };
 }
 
+export interface RcaPolicy extends Struct.ComponentSchema {
+  collectionName: 'components_rca_policies';
+  info: {
+    displayName: 'policy';
+  };
+  attributes: {
+    weightage: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<1>;
+    negative_weightage: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
 export interface RcaPartB extends Struct.ComponentSchema {
   collectionName: 'components_rca_part_bs';
   info: {
@@ -193,15 +212,46 @@ export interface RcaPartA extends Struct.ComponentSchema {
   };
 }
 
-export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
-  collectionName: 'components_qb_components_mtf_col_a_options';
+export interface RcaOption extends Struct.ComponentSchema {
+  collectionName: 'components_rca_options';
   info: {
-    displayName: 'mtf_colA_option';
+    displayName: 'Option';
     description: '';
   };
   attributes: {
-    left_option: Schema.Attribute.String;
-    right_option: Schema.Attribute.Component<'block.option', true>;
+    text: Schema.Attribute.RichText & Schema.Attribute.Required;
+    is_answer: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+  };
+}
+
+export interface RcaMcq extends Struct.ComponentSchema {
+  collectionName: 'components_rca_mcqs';
+  info: {
+    displayName: 'mcq';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    question_type: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'MCQ'>;
+    tag: Schema.Attribute.String & Schema.Attribute.Required;
+    time: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'1m'>;
+    policy: Schema.Attribute.Component<'rca.policy', false> &
+      Schema.Attribute.Required;
+    options: Schema.Attribute.Component<'rca.option', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    question: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }
 
@@ -345,6 +395,18 @@ export interface BlockAssertionAndReason extends Struct.ComponentSchema {
   };
 }
 
+export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
+  collectionName: 'components_qb_components_mtf_col_a_options';
+  info: {
+    displayName: 'mtf_colA_option';
+    description: '';
+  };
+  attributes: {
+    left_option: Schema.Attribute.String;
+    right_option: Schema.Attribute.Component<'block.option', true>;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -360,9 +422,11 @@ declare module '@strapi/strapi' {
       'vocab.assets': VocabAssets;
       'vocab.assets-and-text': VocabAssetsAndText;
       'vocab.adverbs': VocabAdverbs;
+      'rca.policy': RcaPolicy;
       'rca.part-b': RcaPartB;
       'rca.part-a': RcaPartA;
-      'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
+      'rca.option': RcaOption;
+      'rca.mcq': RcaMcq;
       'block.true-false': BlockTrueFalse;
       'block.subjective': BlockSubjective;
       'block.option': BlockOption;
@@ -373,6 +437,7 @@ declare module '@strapi/strapi' {
       'block.case-base': BlockCaseBase;
       'block.audio-question': BlockAudioQuestion;
       'block.assertion-and-reason': BlockAssertionAndReason;
+      'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
     }
   }
 }

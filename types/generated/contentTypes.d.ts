@@ -675,6 +675,45 @@ export interface ApiRcaMapRcaMap extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiTeluguComponentTeluguComponent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'telugu_components';
+  info: {
+    singularName: 'telugu-component';
+    pluralName: 'telugu-components';
+    displayName: 'telugu';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    text: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::telugu-component.telugu-component'
+    >;
+  };
+}
+
 export interface ApiTodoTodo extends Struct.CollectionTypeSchema {
   collectionName: 'todos';
   info: {
@@ -1126,6 +1165,7 @@ declare module '@strapi/strapi' {
       'api::question-builder.question-builder': ApiQuestionBuilderQuestionBuilder;
       'api::rca-assessment.rca-assessment': ApiRcaAssessmentRcaAssessment;
       'api::rca-map.rca-map': ApiRcaMapRcaMap;
+      'api::telugu-component.telugu-component': ApiTeluguComponentTeluguComponent;
       'api::todo.todo': ApiTodoTodo;
       'api::vocab-map.vocab-map': ApiVocabMapVocabMap;
       'admin::permission': AdminPermission;

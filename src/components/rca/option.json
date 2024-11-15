@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_rca_options",
+  "info": {
+    "displayName": "Option",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "richtext",
+      "required": true
+    },
+    "is_answer": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

@@ -1,3 +1,4 @@
+Note: Using Snake Casing for all input fields
 Changed tsconfig file to import images => https://graffino.com/til/how-to-import-images-in-typescript
 
 

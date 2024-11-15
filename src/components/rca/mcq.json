@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_rca_mcqs",
+  "info": {
+    "displayName": "mcq",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "question_type": {
+      "type": "string",
+      "required": true,
+      "default": "MCQ"
+    },
+    "tag": {
+      "type": "string",
+      "required": true
+    },
+    "time": {
+      "type": "string",
+      "required": true,
+      "default": "1m",
+      "regex": "^\\d+m$"
+    },
+    "policy": {
+      "type": "component",
+      "repeatable": false,
+      "component": "rca.policy",
+      "required": true
+    },
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "rca.option",
+      "required": true,
+      "min": 0
+    },
+    "question": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}
