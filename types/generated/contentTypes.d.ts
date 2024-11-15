@@ -546,8 +546,6 @@ export interface ApiQuestionBuilderQuestionBuilder
         },
         number
       >;
-    Hint: Schema.Attribute.Blocks;
-    Explanation: Schema.Attribute.Blocks;
     Negative_Marks: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
@@ -567,6 +565,12 @@ export interface ApiQuestionBuilderQuestionBuilder
     Subject: Schema.Attribute.Enumeration<
       ['English', 'Hindi', 'Telugu', 'EVS', 'Mathematics', 'Social Studies']
     >;
+    Chapter: Schema.Attribute.String & Schema.Attribute.Required;
+    Difficulty: Schema.Attribute.Enumeration<['Easy', 'Medium', 'Hard']> &
+      Schema.Attribute.Required;
+    tags: Schema.Attribute.String;
+    Hint: Schema.Attribute.RichText;
+    Explanation: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

@@ -1,4 +1,6 @@
 Note: Using Snake Casing for all input fields
+Note: typeconfig.json errors:
+https://flaviocopes.com/fix-error-in-tsconfigjson-cannot-find-type-definition-file-for-node/
 Changed tsconfig file to import images => https://graffino.com/til/how-to-import-images-in-typescript
 
 

@@ -50,12 +50,6 @@
       "min": 1,
       "max": 1
     },
-    "Hint": {
-      "type": "blocks"
-    },
-    "Explanation": {
-      "type": "blocks"
-    },
     "Negative_Marks": {
       "type": "integer",
       "required": true,
@@ -90,6 +84,28 @@
         "Mathematics",
         "Social Studies"
       ]
+    },
+    "Chapter": {
+      "type": "string",
+      "required": true
+    },
+    "Difficulty": {
+      "type": "enumeration",
+      "enum": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "required": true
+    },
+    "tags": {
+      "type": "string"
+    },
+    "Hint": {
+      "type": "richtext"
+    },
+    "Explanation": {
+      "type": "richtext"
     }
   }
 }
