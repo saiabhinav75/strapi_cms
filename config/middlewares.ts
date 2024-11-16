@@ -1,4 +1,4 @@
-export default [
+export default ({ env }) => [
   'strapi::logger',
   'strapi::errors',
   {
@@ -12,13 +12,15 @@ export default [
             "'self'",
             'data:',
             'blob:',
-            'https://zragvlgzbensfgplfuey.supabase.co/storage/v1/s3',
+            'market-assets.strapi.io',
+           `${env("S3_BUCKET_NAME")}.s3.${env("S3_REGION")}.amazonaws.com`,
           ],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
-            'https://zragvlgzbensfgplfuey.supabase.co/storage/v1/s3',
+            'market-assets.strapi.io',
+            `${env("S3_BUCKET_NAME")}.s3.${env("S3_REGION")}.amazonaws.com`,
           ],
           upgradeInsecureRequests: null,
         },
