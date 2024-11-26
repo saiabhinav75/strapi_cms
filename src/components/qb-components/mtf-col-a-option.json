@@ -6,13 +6,16 @@
   },
   "options": {},
   "attributes": {
-    "left_option": {
-      "type": "string"
-    },
-    "right_option": {
+    "right_column_options": {
       "type": "component",
       "repeatable": true,
       "component": "block.option"
+    },
+    "left_column_option": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.option",
+      "required": true
     }
   }
 }
