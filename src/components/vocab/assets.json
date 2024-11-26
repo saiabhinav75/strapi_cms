@@ -2,41 +2,16 @@
   "collectionName": "components_vocab_assets",
   "info": {
     "displayName": "assets",
-    "icon": "picture"
+    "icon": "picture",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "UK": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
+    "naming_instructions": {
+      "type": "richtext",
+      "default": "1. For word/meaning/example Indian Accent: naming - IN 2. For word/meaning/example British Accent: naming - UK 3. For word/meaning/example American Accent: naming - US"
     },
-    "IN": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
-    },
-    "US": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
-    },
-    "Img": {
+    "media": {
       "allowedTypes": [
         "images",
         "files",

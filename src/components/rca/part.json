@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_rca_parts",
+  "info": {
+    "displayName": "Part"
+  },
+  "options": {},
+  "attributes": {
+    "instruction": {
+      "type": "string",
+      "required": true
+    },
+    "part_name": {
+      "type": "enumeration",
+      "enum": [
+        "Part A",
+        "Part B"
+      ],
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "time": {
+      "type": "string",
+      "default": "10m",
+      "regex": "^[1-9]\\d*m$",
+      "required": true
+    },
+    "content": {
+      "displayName": "content",
+      "type": "component",
+      "repeatable": false,
+      "component": "rca.content",
+      "required": true
+    }
+  }
+}

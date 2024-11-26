@@ -12,17 +12,9 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "regex": "[A-Z]",
-      "required": true
-    },
-    "parts": {
-      "type": "dynamiczone",
-      "components": [
-        "rca.part-b",
-        "rca.part-a"
-      ],
       "required": true
     },
     "class": {
@@ -57,6 +49,17 @@
     "week": {
       "type": "integer",
       "required": false
+    },
+    "passage": {
+      "type": "richtext",
+      "required": true
+    },
+    "questions": {
+      "type": "dynamiczone",
+      "components": [
+        "rca.mcq"
+      ],
+      "required": true
     }
   }
 }

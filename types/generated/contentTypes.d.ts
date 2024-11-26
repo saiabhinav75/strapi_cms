@@ -599,9 +599,7 @@ export interface ApiRcaAssessmentRcaAssessment
     draftAndPublish: true;
   };
   attributes: {
-    Title: Schema.Attribute.String & Schema.Attribute.Required;
-    parts: Schema.Attribute.DynamicZone<['rca.part-b', 'rca.part-a']> &
-      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     class: Schema.Attribute.Integer & Schema.Attribute.Required;
     assessment_type: Schema.Attribute.Enumeration<
       ['Baseline', 'MonthEnd', 'TermEnd', 'Practice']
@@ -611,6 +609,9 @@ export interface ApiRcaAssessmentRcaAssessment
     bucket: Schema.Attribute.Enumeration<['E', 'T', 'P', 'none']>;
     month: Schema.Attribute.Integer;
     week: Schema.Attribute.Integer;
+    passage: Schema.Attribute.RichText & Schema.Attribute.Required;
+    questions: Schema.Attribute.DynamicZone<['rca.mcq']> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -735,7 +736,10 @@ export interface ApiTodoTodo extends Struct.CollectionTypeSchema {
     mcq: Schema.Attribute.DynamicZone<['block.mcq-question']>;
     todo_title: Schema.Attribute.Blocks & Schema.Attribute.Required;
     todo_title2: Schema.Attribute.RichText;
-    media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
