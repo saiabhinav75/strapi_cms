@@ -599,8 +599,7 @@ export interface ApiRcaAssessmentRcaAssessment
     draftAndPublish: true;
   };
   attributes: {
-    Title: Schema.Attribute.String & Schema.Attribute.Required;
-    parts: Schema.Attribute.DynamicZone<[]> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     class: Schema.Attribute.Integer & Schema.Attribute.Required;
     assessment_type: Schema.Attribute.Enumeration<
       ['Baseline', 'MonthEnd', 'TermEnd', 'Practice']
@@ -610,6 +609,9 @@ export interface ApiRcaAssessmentRcaAssessment
     bucket: Schema.Attribute.Enumeration<['E', 'T', 'P', 'none']>;
     month: Schema.Attribute.Integer;
     week: Schema.Attribute.Integer;
+    passage: Schema.Attribute.RichText & Schema.Attribute.Required;
+    questions: Schema.Attribute.DynamicZone<['rca.mcq']> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
