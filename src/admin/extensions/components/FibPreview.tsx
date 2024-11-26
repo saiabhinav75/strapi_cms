@@ -100,7 +100,7 @@ function FibPreview({ isModalOpen, handleCloseModal, curriculumData }:Props) {
          
 
 
-          <Common  Term={curriculumData.Term} Class={curriculumData.Class} Subject={curriculumData.Subject} Curriculum_Goal={curriculumData.Curriculum_Goal} Topic={curriculumData.Topic} Subtopic={curriculumData.Subtopic} Explanation={curriculumData.Explanation} Marks={curriculumData.Marks} Difficulty={curriculumData.Difficulty} Hint={curriculumData.Hint} Chapter={curriculumData.Chapter} Stage={curriculumData.Stage} Negative_Marks={curriculumData.Negative_Marks}  /> 
+          <Common tags={curriculumData.tags}  Term={curriculumData.Term} Class={curriculumData.Class} Subject={curriculumData.Subject} Curriculum_Goal={curriculumData.Curriculum_Goal} Topic={curriculumData.Topic} Subtopic={curriculumData.Subtopic} Explanation={curriculumData.Explanation} Marks={curriculumData.Marks} Difficulty={curriculumData.Difficulty} Hint={curriculumData.Hint} Chapter={curriculumData.Chapter} Stage={curriculumData.Stage} Negative_Marks={curriculumData.Negative_Marks}  /> 
           
 
 
@@ -110,7 +110,9 @@ function FibPreview({ isModalOpen, handleCloseModal, curriculumData }:Props) {
               Fill in the Blank Question
             </h3>
             <div style={{ marginBottom: '16px', color: "black", fontSize: '14px' }}>
+              <p style={{ fontWeight: '600', marginBottom: '8px' ,fontSize: '14px'}}>Question</p>
               <p>{curriculumData.Question[0].Question}</p>
+              <p style={{ fontWeight: '600', marginBottom: '8px' ,fontSize: '14px'}}>Answer</p>
               <input
                 type="text"
                 value={curriculumData.Question[0].Answer}

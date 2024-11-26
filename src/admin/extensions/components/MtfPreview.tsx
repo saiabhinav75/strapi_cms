@@ -4,7 +4,7 @@ import Common from "./Common";
 
 const MtfPreview = ({ isModalOpen, handleCloseModal, curriculumData }) => {
   const question = curriculumData.Question[0]; // Assuming there's only one question in the array
-
+console.log(question)
   return (
     <div style={{ padding: '16px' }}>
 

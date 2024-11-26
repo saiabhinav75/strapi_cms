@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Common from './Common';
 
+
 function SubjectivePreview({ isModalOpen, handleCloseModal, curriculumData,isLA }) {
 
   useEffect(() => {
@@ -69,13 +70,13 @@ function SubjectivePreview({ isModalOpen, handleCloseModal, curriculumData,isLA 
   
           {/* Data fields */}
           
-          <Common  Term={curriculumData.Term} Class={curriculumData.Class} Subject={curriculumData.Subject} Curriculum_Goal={curriculumData.Curriculum_Goal} Topic={curriculumData.Topic} Subtopic={curriculumData.Subtopic} Explanation={curriculumData.Explanation} Marks={curriculumData.Marks} Difficulty={curriculumData.Difficulty} Hint={curriculumData.Hint} Chapter={curriculumData.Chapter} Stage={curriculumData.Stage} Negative_Marks={curriculumData.Negative_Marks}  /> 
+          <Common tags={curriculumData.tags}  Term={curriculumData.Term} Class={curriculumData.Class} Subject={curriculumData.Subject} Curriculum_Goal={curriculumData.Curriculum_Goal} Topic={curriculumData.Topic} Subtopic={curriculumData.Subtopic} Explanation={curriculumData.Explanation} Marks={curriculumData.Marks} Difficulty={curriculumData.Difficulty} Hint={curriculumData.Hint} Chapter={curriculumData.Chapter} Stage={curriculumData.Stage} Negative_Marks={curriculumData.Negative_Marks}  /> 
           
 
 
           <div style={{ marginBottom: '24px' }}>
             <h3 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px',color:"black" }}>
-              Subjective Question :  {isLA=="LA"?"Long Answer":isLA=="SA"?"Short Answer":"Vary Short Answer"}
+              Subjective Question :  {isLA=="LA"?"Long Answer":isLA=="SA"?"Short Answer":"Very Short Answer"}
             </h3>
             <div style={{ marginBottom: '16px',color:"black" ,
                       fontSize:"17px"}}>
@@ -89,7 +90,7 @@ function SubjectivePreview({ isModalOpen, handleCloseModal, curriculumData,isLA 
                 <label style={{ fontWeight: '600', marginBottom: '8px', display: 'block',color:"black" }}>
                   Answer:
                 </label>
-                {curriculumData.Question[0].answer.map((answerParagraph, index) => (
+                {curriculumData?.Question[0]?.answer.map((answerParagraph: { children: { text: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; }[]; }, index: React.Key | null | undefined) => (
                   <p
                     key={index}
                     style={{

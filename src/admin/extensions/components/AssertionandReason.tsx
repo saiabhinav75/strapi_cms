@@ -69,7 +69,7 @@ function AssertionandReason({ isModalOpen, handleCloseModal, curriculumData }:Pr
           {/* Data fields */}
           
           
-          <Common  Term={curriculumData.Term} Class={curriculumData.Class} Subject={curriculumData.Subject} Curriculum_Goal={curriculumData.Curriculum_Goal} Topic={curriculumData.Topic} Subtopic={curriculumData.Subtopic} Explanation={curriculumData.Explanation} Marks={curriculumData.Marks} Difficulty={curriculumData.Difficulty} Hint={curriculumData.Hint} Chapter={curriculumData.Chapter} Stage={curriculumData.Stage} Negative_Marks={curriculumData.Negative_Marks}  /> 
+          <Common  tags={curriculumData.tags} Term={curriculumData.Term} Class={curriculumData.Class} Subject={curriculumData.Subject} Curriculum_Goal={curriculumData.Curriculum_Goal} Topic={curriculumData.Topic} Subtopic={curriculumData.Subtopic} Explanation={curriculumData.Explanation} Marks={curriculumData.Marks} Difficulty={curriculumData.Difficulty} Hint={curriculumData.Hint} Chapter={curriculumData.Chapter} Stage={curriculumData.Stage} Negative_Marks={curriculumData.Negative_Marks}  /> 
           
 
 
@@ -124,17 +124,17 @@ function AssertionandReason({ isModalOpen, handleCloseModal, curriculumData }:Pr
                     <div
                       key={option.id}
                       style={{
-                        backgroundColor: option.is_answer ? '#D1FAE5' : '#F3F4F6',
+                        backgroundColor: option.is_answer ? '#4cdb83' : '#F3F4F6',
                         padding: '12px 16px',
                         marginBottom: '10px',
                         borderRadius: '8px',
                         fontSize: '16px',
                         cursor: 'pointer',
-                        border: option.is_answer ? '1px solid #10B981' : '1px solid #E5E7EB',
+                        border: option.is_answer ? '1px solid #10B981' : '1px solid #ffffff',
                         transition: 'background-color 0.3s ease',
                       }}
-                      onMouseEnter={(e) => (e.target.style.backgroundColor = '#E6F9EC')}
-                      onMouseLeave={(e) => (e.target.style.backgroundColor = option.is_answer ? '#D1FAE5' : '#F3F4F6')}
+                      // onMouseEnter={(e) => (e.target.style.backgroundColor = '#E6F9EC')}
+                      // onMouseLeave={(e) => (e.target.style.backgroundColor = option.is_answer ? '#D1FAE5' : '#F3F4F6')}
                     >
                       <p
                         style={{

@@ -1,123 +1,17 @@
 import React from 'react';
 import Common from './Common';
+import { CommonProps } from '../types';
+
+interface DataType {
+  isModalOpen:boolean
+  
+handleCloseModal:()=> void
+curriculumData :CommonProps
+}
 
 
-const exampleData = {
-  Term: 1,
-  Class: 1,
-  Curriculum_Goal: '1',
-  Marks: 1,
-  Hint: '1',
-  Explanation: '1',
-  Negative_Marks: 0,
-  Topic: '1',
-  Subtopic: '1',
-  Stage: 'Foundational',
-  Subject: 'English',
-  Chapter: '1',
-  Difficulty: 'Easy',
-  tags: '1,2',
-  Question: [
-    {
-      __component: 'block.case-base',
-      id: 1,
-      Case_Text:
-        'You are managing a development team building a Netflix-like platform with real-time syncing using Socket.io. During a team meeting, it becomes clear that some users experience delays in playback synchronization. What should you prioritize to solve this issue?',
-      mcq: [
-        {
-          id: 11,
-          Question_Type: 'MCQ',
-          question_text: [
-            {
-              type: 'paragraph',
-              children: [
-                {
-                  text: 'Optimize the server infrastructure to handle more concurrent users.',
-                  type: 'text',
-                },
-              ],
-            },
-          ],
-          options: [
-            {
-              id: 86,
-              is_answer: false,
-              option_text: [
-                {
-                  type: 'paragraph',
-                  children: [
-                    {
-                      text: 'Optimize the server infrastructure to handle more concurrent users.',
-                      type: 'text',
-                    },
-                  ],
-                },
-              ],
-              media_option: null,
-              __temp_key__: 'a0',
-            },
-            {
-              id: 87,
-              is_answer: false,
-              option_text: [
-                {
-                  type: 'paragraph',
-                  children: [
-                    {
-                      text: 'Implement client-side buffering to reduce sync issues.',
-                      type: 'text',
-                    },
-                  ],
-                },
-              ],
-              media_option: null,
-              __temp_key__: 'a1',
-            },
-            {
-              id: 88,
-              is_answer: true,
-              option_text: [
-                {
-                  type: 'paragraph',
-                  children: [
-                    {
-                      text: 'Add logging and monitoring to identify the root cause.',
-                      type: 'text',
-                    },
-                  ],
-                },
-              ],
-              media_option: null,
-              __temp_key__: 'a2',
-            },
-            {
-              id: 89,
-              is_answer: false,
-              option_text: [
-                {
-                  type: 'paragraph',
-                  children: [
-                    {
-                      text: 'Upgrade to a faster database for storing playback events.',
-                      type: 'text',
-                    },
-                  ],
-                },
-              ],
-              media_option: null,
-              __temp_key__: 'a3',
-            },
-          ],
-          __temp_key__: 'a0',
-        },
-      ],
-      __temp_key__: 'a0',
-    },
-  ],
-};
-
-function CaseBasedQuestion({ isModalOpen, handleCloseModal, curriculumData }) {
-  const question = exampleData.Question[0]; 
+function CaseBasedQuestion({ isModalOpen, handleCloseModal, curriculumData }:DataType) {
+  const question = curriculumData.Question[0]; 
   const mcq = question.mcq[0];
   return (
 
@@ -200,17 +94,17 @@ function CaseBasedQuestion({ isModalOpen, handleCloseModal, curriculumData }) {
               fontSize: '15px',
             }}>Question:</strong> {mcq.question_text[0].children[0].text}</p>
               <div style={{ marginTop: '10px' }}>
-                {mcq.options.map((option, index) => (
+                {mcq.options.map((option: { is_answer: any; option_text: any[]; }, index: React.Key | null | undefined) => (
                   <div
                     key={index}
                     style={{
                       padding: '10px',
                       margin: '5px 0',
-                      background: option.is_answer ? '#d4edda' : '#f8d7da',
+                      background: option.is_answer ? '#4bf372' : '#fbfbfb',
                       borderRadius: '5px',
                     }}
                   >
-                    {option.option_text.map((textObj, idx) => (
+                    {option.option_text.map((textObj: { children: { text: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; }[]; }, idx: React.Key | null | undefined) => (
                       <p style={{
                         color: 'black',
                       }} key={idx}>{textObj.children[0].text}</p>

@@ -1,4 +1,5 @@
 export interface CommonProps {
+   
 
     Term: number
     Class: number
@@ -15,6 +16,12 @@ export interface CommonProps {
     Negative_Marks: number
     Subtopic: string
     tags: string
+    Question?: string | undefined
   
   
   }
+
+interface QuestionType {
+  
+
+}  
