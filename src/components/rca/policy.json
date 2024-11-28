@@ -1,7 +1,8 @@
 {
   "collectionName": "components_rca_policies",
   "info": {
-    "displayName": "policy"
+    "displayName": "policy",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,7 +14,8 @@
     },
     "negative_weightage": {
       "required": true,
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     }
   }
 }

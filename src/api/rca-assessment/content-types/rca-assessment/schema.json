@@ -10,16 +10,21 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "title": {
       "type": "string",
       "regex": "[A-Z]",
-      "required": true
-    },
-    "class": {
-      "type": "integer",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "assessment_type": {
       "type": "enumeration",
@@ -30,35 +35,78 @@
         "Practice"
       ],
       "required": true,
-      "default": "Practice"
-    },
-    "bucket": {
-      "type": "enumeration",
-      "enum": [
-        "E",
-        "T",
-        "P",
-        "none"
-      ],
-      "required": false
-    },
-    "month": {
-      "type": "integer",
-      "required": false
-    },
-    "week": {
-      "type": "integer",
-      "required": false
+      "default": "Practice",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "passage": {
       "type": "richtext",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "questions": {
       "type": "dynamiczone",
       "components": [
         "rca.mcq"
       ],
+      "required": true,
+      "min": 1,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "assets": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "common.media",
+      "required": true
+    },
+    "time": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "regex": "^\\d+m$",
+      "default": "20m",
+      "required": true
+    },
+    "part_A_metadata": {
+      "displayName": "part_metadata",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "rca.part-metadata",
+      "required": true
+    },
+    "part_B_metadata": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "rca.part-metadata",
       "required": true
     }
   }

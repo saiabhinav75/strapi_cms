@@ -351,7 +351,7 @@ export interface BlockMcqQuestion extends Struct.ComponentSchema {
   };
   attributes: {
     options: Schema.Attribute.Component<'block.option', true>;
-    Question_Type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'MCQ'>;
+    question_type: Schema.Attribute.String & Schema.Attribute.DefaultTo<'MCQ'>;
     question_text: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
 }

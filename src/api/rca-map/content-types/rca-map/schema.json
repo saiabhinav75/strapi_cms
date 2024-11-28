@@ -10,12 +10,21 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "class": {
       "min": 0,
       "max": 10,
-      "type": "integer"
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "bucket": {
       "type": "enumeration",
@@ -24,7 +33,12 @@
         "T",
         "P",
         "none"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "assessment_type": {
       "type": "enumeration",
@@ -34,15 +48,30 @@
         "TermEnd",
         "Practice"
       ],
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "month": {
-      "type": "integer"
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "week": {
       "type": "integer",
       "min": 1,
-      "max": 4
+      "max": 4,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "rca_assessments": {
       "type": "relation",

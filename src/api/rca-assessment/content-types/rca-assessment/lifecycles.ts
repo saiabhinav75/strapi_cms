@@ -21,10 +21,9 @@ function validateMCQOptions(questions: any) {
 
 export default {
     async afterUpdate(event) {
-        const {where} = event.params;
         console.log("after Update")
         const questions = event.result?.questions || []
-        if(questions && !validateMCQOptions(questions)){
+        if(questions.length && !validateMCQOptions(questions)){
             throw new ValidationError("At least one option must be marked as the correct answer.");
         }
     },

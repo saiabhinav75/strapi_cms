@@ -19,7 +19,7 @@
     "time": {
       "type": "string",
       "required": true,
-      "default": "1m",
+      "default": "2m",
       "regex": "^\\d+m$"
     },
     "policy": {
