@@ -1,20 +1,13 @@
 {
-  "collectionName": "components_rca_parts",
+  "collectionName": "components_rca_part_metadata",
   "info": {
-    "displayName": "Part"
+    "displayName": "part_metadata",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "instruction": {
       "type": "string",
-      "required": true
-    },
-    "part_name": {
-      "type": "enumeration",
-      "enum": [
-        "Part A",
-        "Part B"
-      ],
       "required": true
     },
     "description": {
@@ -23,8 +16,8 @@
     },
     "time": {
       "type": "string",
+      "regex": "^\\d+m$",
       "default": "10m",
-      "regex": "^[1-9]\\d*m$",
       "required": true
     }
   }

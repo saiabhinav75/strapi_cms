@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_common_media",
+  "info": {
+    "displayName": "media",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "file_key": {
+      "type": "string",
+      "required": true
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "videos",
+        "audios",
+        "files"
+      ]
+    }
+  }
+}

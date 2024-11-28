@@ -598,20 +598,78 @@ export interface ApiRcaAssessmentRcaAssessment
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    class: Schema.Attribute.Integer & Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     assessment_type: Schema.Attribute.Enumeration<
       ['Baseline', 'MonthEnd', 'TermEnd', 'Practice']
     > &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Schema.Attribute.DefaultTo<'Practice'>;
-    bucket: Schema.Attribute.Enumeration<['E', 'T', 'P', 'none']>;
-    month: Schema.Attribute.Integer;
-    week: Schema.Attribute.Integer;
-    passage: Schema.Attribute.RichText & Schema.Attribute.Required;
+    passage: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     questions: Schema.Attribute.DynamicZone<['rca.mcq']> &
-      Schema.Attribute.Required;
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    assets: Schema.Attribute.Component<'common.media', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    time: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'20m'>;
+    part_A_metadata: Schema.Attribute.Component<'rca.part-metadata', false> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    part_B_metadata: Schema.Attribute.Component<'rca.part-metadata', false> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -638,8 +696,18 @@ export interface ApiRcaMapRcaMap extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     class: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Schema.Attribute.SetMinMax<
         {
           min: 0;
@@ -647,13 +715,33 @@ export interface ApiRcaMapRcaMap extends Struct.CollectionTypeSchema {
         },
         number
       >;
-    bucket: Schema.Attribute.Enumeration<['E', 'T', 'P', 'none']>;
+    bucket: Schema.Attribute.Enumeration<['E', 'T', 'P', 'none']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     assessment_type: Schema.Attribute.Enumeration<
       ['Baseline', 'MonthEnd', 'TermEnd', 'Practice']
     > &
-      Schema.Attribute.Required;
-    month: Schema.Attribute.Integer;
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    month: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     week: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Schema.Attribute.SetMinMax<
         {
           min: 1;
