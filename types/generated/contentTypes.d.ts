@@ -592,7 +592,7 @@ export interface ApiRcaAssessmentRcaAssessment
   info: {
     singularName: 'rca-assessment';
     pluralName: 'rca-assessments';
-    displayName: 'RCA_Assessment';
+    displayName: 'rca_assessment';
     description: '';
   };
   options: {
@@ -665,6 +665,14 @@ export interface ApiRcaAssessmentRcaAssessment
       }>;
     part_B_metadata: Schema.Attribute.Component<'rca.part-metadata', false> &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    assessment_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
