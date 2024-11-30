@@ -6,7 +6,9 @@
   "scripts": {
     "build": "strapi build",
     "deploy": "strapi deploy",
-    "develop": "strapi develop",
+    "develop": "cross-env NODE_ENV='development' ENV_PATH='./.env' strapi develop",
+    "prod:build": "cross-env NODE_ENV='production' ENV_PATH='./.env.production' strapi build",
+    "prod":"cross-env NODE_ENV='production' ENV_PATH='./.env.production' strapi start",
     "start": "strapi start",
     "strapi": "strapi"
   },
@@ -34,6 +36,7 @@
     "@types/node": "^20.16.13",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cross-env": "^7.0.3",
     "typescript": "^5"
   },
   "engines": {
