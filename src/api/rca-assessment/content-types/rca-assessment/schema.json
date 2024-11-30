@@ -26,22 +26,6 @@
         }
       }
     },
-    "assessment_type": {
-      "type": "enumeration",
-      "enum": [
-        "Baseline",
-        "MonthEnd",
-        "TermEnd",
-        "Practice"
-      ],
-      "required": true,
-      "default": "Practice",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "passage": {
       "type": "richtext",
       "required": true,

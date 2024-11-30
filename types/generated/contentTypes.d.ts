@@ -611,16 +611,6 @@ export interface ApiRcaAssessmentRcaAssessment
           localized: true;
         };
       }>;
-    assessment_type: Schema.Attribute.Enumeration<
-      ['Baseline', 'MonthEnd', 'TermEnd', 'Practice']
-    > &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Schema.Attribute.DefaultTo<'Practice'>;
     passage: Schema.Attribute.RichText &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
