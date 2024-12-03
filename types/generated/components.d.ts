@@ -164,19 +164,6 @@ export interface VocabAdverbs extends Struct.ComponentSchema {
   };
 }
 
-export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
-  collectionName: 'components_qb_components_mtf_col_a_options';
-  info: {
-    displayName: 'mtf_colA_option';
-    description: '';
-  };
-  attributes: {
-    right_column_options: Schema.Attribute.Component<'block.option', true>;
-    left_column_option: Schema.Attribute.Component<'block.option', false> &
-      Schema.Attribute.Required;
-  };
-}
-
 export interface RcaPolicy extends Struct.ComponentSchema {
   collectionName: 'components_rca_policies';
   info: {
@@ -277,15 +264,19 @@ export interface RcaMcq extends Struct.ComponentSchema {
   };
 }
 
-export interface CommonMedia extends Struct.ComponentSchema {
-  collectionName: 'components_common_media';
+export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
+  collectionName: 'components_qb_components_mtf_col_a_options';
   info: {
     displayName: 'media';
+    description: '';
+    displayName: 'mtf_colA_option';
     description: '';
   };
   attributes: {
     file_key: Schema.Attribute.String & Schema.Attribute.Required;
     media: Schema.Attribute.Media<'images' | 'videos' | 'audios' | 'files'> &
+    right_column_options: Schema.Attribute.Component<'block.option', true>;
+    left_column_option: Schema.Attribute.Component<'block.option', false> &
       Schema.Attribute.Required;
   };
 }
@@ -431,6 +422,19 @@ export interface BlockAssertionAndReason extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonMedia extends Struct.ComponentSchema {
+  collectionName: 'components_common_media';
+  info: {
+    displayName: 'media';
+    description: '';
+  };
+  attributes: {
+    file_key: Schema.Attribute.String & Schema.Attribute.Required;
+    media: Schema.Attribute.Media<'images' | 'videos' | 'audios' | 'files'> &
+      Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -446,12 +450,12 @@ declare module '@strapi/strapi' {
       'vocab.assets': VocabAssets;
       'vocab.assets-and-text': VocabAssetsAndText;
       'vocab.adverbs': VocabAdverbs;
-      'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
       'rca.policy': RcaPolicy;
       'rca.part': RcaPart;
       'rca.part-metadata': RcaPartMetadata;
       'rca.option': RcaOption;
       'rca.mcq': RcaMcq;
+      'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
       'common.media': CommonMedia;
       'block.true-false': BlockTrueFalse;
       'block.subjective': BlockSubjective;
@@ -463,6 +467,7 @@ declare module '@strapi/strapi' {
       'block.case-base': BlockCaseBase;
       'block.audio-question': BlockAudioQuestion;
       'block.assertion-and-reason': BlockAssertionAndReason;
+      'common.media': CommonMedia;
     }
   }
 }
