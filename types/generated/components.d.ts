@@ -181,6 +181,7 @@ export interface RcaPolicy extends Struct.ComponentSchema {
   collectionName: 'components_rca_policies';
   info: {
     displayName: 'policy';
+    description: '';
   };
   attributes: {
     weightage: Schema.Attribute.Integer &
@@ -192,7 +193,9 @@ export interface RcaPolicy extends Struct.ComponentSchema {
         number
       > &
       Schema.Attribute.DefaultTo<1>;
-    negative_weightage: Schema.Attribute.Integer & Schema.Attribute.Required;
+    negative_weightage: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
   };
 }
 
@@ -209,8 +212,21 @@ export interface RcaPart extends Struct.ComponentSchema {
     time: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'10m'>;
-    content: Schema.Attribute.Component<'rca.content', false> &
-      Schema.Attribute.Required;
+  };
+}
+
+export interface RcaPartMetadata extends Struct.ComponentSchema {
+  collectionName: 'components_rca_part_metadata';
+  info: {
+    displayName: 'part_metadata';
+    description: '';
+  };
+  attributes: {
+    instruction: Schema.Attribute.String & Schema.Attribute.Required;
+    description: Schema.Attribute.String & Schema.Attribute.Required;
+    time: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'10m'>;
   };
 }
 
@@ -225,6 +241,10 @@ export interface RcaOption extends Struct.ComponentSchema {
     is_answer: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;
+    media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
   };
 }
 
@@ -242,7 +262,7 @@ export interface RcaMcq extends Struct.ComponentSchema {
     tag: Schema.Attribute.String & Schema.Attribute.Required;
     time: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'1m'>;
+      Schema.Attribute.DefaultTo<'2m'>;
     policy: Schema.Attribute.Component<'rca.policy', false> &
       Schema.Attribute.Required;
     options: Schema.Attribute.Component<'rca.option', true> &
@@ -257,17 +277,15 @@ export interface RcaMcq extends Struct.ComponentSchema {
   };
 }
 
-export interface RcaContent extends Struct.ComponentSchema {
-  collectionName: 'components_rca_contents';
+export interface CommonMedia extends Struct.ComponentSchema {
+  collectionName: 'components_common_media';
   info: {
-    displayName: 'content';
+    displayName: 'media';
+    description: '';
   };
   attributes: {
-    passage: Schema.Attribute.RichText & Schema.Attribute.Required;
-    model_reading: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    > &
+    file_key: Schema.Attribute.String & Schema.Attribute.Required;
+    media: Schema.Attribute.Media<'images' | 'videos' | 'audios' | 'files'> &
       Schema.Attribute.Required;
   };
 }
@@ -431,9 +449,10 @@ declare module '@strapi/strapi' {
       'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
       'rca.policy': RcaPolicy;
       'rca.part': RcaPart;
+      'rca.part-metadata': RcaPartMetadata;
       'rca.option': RcaOption;
       'rca.mcq': RcaMcq;
-      'rca.content': RcaContent;
+      'common.media': CommonMedia;
       'block.true-false': BlockTrueFalse;
       'block.subjective': BlockSubjective;
       'block.option': BlockOption;
