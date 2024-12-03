@@ -3,7 +3,7 @@ import Common from './Common';
 
 
 
-const QuestionComponent = ({ question }) => {
+ const QuestionComponent = ({ question }) => {
     const { question_text, options } = question;
     console.log(question)
     return (
