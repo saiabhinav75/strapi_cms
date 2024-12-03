@@ -20,7 +20,7 @@ export default function QuestionPreviewModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-  const isMCQ = data?.Question?.[0]?.Question_Type === "MCQ";
+  const isMCQ = data?.Question?.[0]?.question_type === "MCQ";
   const isMTF = data?.Question?.[0]?.Question_Type === "MTF";
   const isFIB = data?.Question?.[0]?.Question_Type === "FIB";
   const isAssertionandReason = data?.Question?.[0]?.Question_Type === "AssesrtionReason";
@@ -31,7 +31,7 @@ export default function QuestionPreviewModal() {
   const Subjective = data?.Question?.[0]?.Question_Type
   const inRca = currentPath.includes("api::rca-assessment.rca-assessment")
  
-
+console.log(isMTF)
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
