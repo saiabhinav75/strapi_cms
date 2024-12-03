@@ -31,9 +31,10 @@ import Common from './Common';
     );
   };
 const McqPreviewModal = ({ isModalOpen, handleCloseModal, curriculumData }) => {
+  console.log(curriculumData.tags,"curriculumData")
 useEffect(() => {
   
-  console.log(curriculumData.tags,"curriculumData")
+ 
 },[curriculumData])
   if (!curriculumData) return null; // Ensure curriculumData exists before rendering
 
