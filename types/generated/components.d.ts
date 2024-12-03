@@ -267,10 +267,14 @@ export interface RcaMcq extends Struct.ComponentSchema {
 export interface QbComponentsMtfColAOption extends Struct.ComponentSchema {
   collectionName: 'components_qb_components_mtf_col_a_options';
   info: {
+    displayName: 'media';
+    description: '';
     displayName: 'mtf_colA_option';
     description: '';
   };
   attributes: {
+    file_key: Schema.Attribute.String & Schema.Attribute.Required;
+    media: Schema.Attribute.Media<'images' | 'videos' | 'audios' | 'files'> &
     right_column_options: Schema.Attribute.Component<'block.option', true>;
     left_column_option: Schema.Attribute.Component<'block.option', false> &
       Schema.Attribute.Required;
@@ -452,6 +456,7 @@ declare module '@strapi/strapi' {
       'rca.option': RcaOption;
       'rca.mcq': RcaMcq;
       'qb-components.mtf-col-a-option': QbComponentsMtfColAOption;
+      'common.media': CommonMedia;
       'block.true-false': BlockTrueFalse;
       'block.subjective': BlockSubjective;
       'block.option': BlockOption;
