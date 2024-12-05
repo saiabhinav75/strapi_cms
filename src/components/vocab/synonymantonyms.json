@@ -12,12 +12,6 @@
       "repeatable": true,
       "component": "vocab.word",
       "required": true
-    },
-    "type": {
-      "type": "component",
-      "repeatable": true,
-      "component": "vocab.synonym-and-antonyms-common-schema",
-      "required": true
     }
   }
 }

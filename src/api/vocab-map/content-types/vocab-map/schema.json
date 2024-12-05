@@ -4,41 +4,75 @@
   "info": {
     "singularName": "vocab-map",
     "pluralName": "vocab-maps",
-    "displayName": "VocabMap",
+    "displayName": "vocab_map",
     "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
-    "Class": {
+    "class": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "month": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "week": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "day": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "vocab": {
       "type": "dynamiczone",
       "components": [
         "vocab.voca-common",
+        "vocab.adverbs",
+        "vocab.compoundnouns",
+        "vocab.prefixsuffixes",
         "vocab.synonymantonyms",
         "vocab.singularplurals",
-        "vocab.sightwords",
-        "vocab.prefixsuffixes",
         "vocab.opposites",
-        "vocab.compoundnouns",
-        "vocab.adverbs"
-      ]
+        "vocab.sightwords"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "assessments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rca-assessment.rca-assessment"
     }
   }
 }

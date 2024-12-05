@@ -1,8 +1,9 @@
 {
   "collectionName": "components_vocab_assets_and_texts",
   "info": {
-    "displayName": "Assets&text",
-    "icon": "discuss"
+    "displayName": "vbb_unit",
+    "icon": "discuss",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -12,8 +13,12 @@
     },
     "assets": {
       "type": "component",
-      "repeatable": true,
-      "component": "vocab.assets"
+      "repeatable": false,
+      "component": "common.media"
+    },
+    "phonetics": {
+      "type": "string",
+      "required": false
     }
   }
 }
