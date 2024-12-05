@@ -10,17 +10,17 @@ import TrueFalse from './TrueFalse';
 import AssertionandReason from './AssertionandReason';
 import MediaBase from './MediaBase';
 import CaseBasedQuestion from './CaseBasedQuestion';
-
+import RcaAssessment from './RcaAssessment';
 
 export default function QuestionPreviewModal() {
   const { form: modifiedData } = unstable_useContentManagerContext();
   const [data, setData] = useState(modifiedData?.values || {});
-
+  const currentPath = location.pathname
   const [curriculumData, setCurriculumData] = useState(data);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-  const isMCQ = data?.Question?.[0]?.Question_Type === "MCQ";
+  const isMCQ = data?.Question?.[0]?.question_type === "MCQ";
   const isMTF = data?.Question?.[0]?.Question_Type === "MTF";
   const isFIB = data?.Question?.[0]?.Question_Type === "FIB";
   const isAssertionandReason = data?.Question?.[0]?.Question_Type === "AssesrtionReason";
@@ -29,8 +29,9 @@ export default function QuestionPreviewModal() {
   const isCaseBase = data?.Question?.[0]?.__component === "block.case-base";
   const isLA = data?.Question?.[0]?.Question_Type === "LA" || data?.Question?.[0]?.Question_Type === "VSA" || data?.Question?.[0]?.Question_Type === "SA";
   const Subjective = data?.Question?.[0]?.Question_Type
-
-
+  const inRca = currentPath.includes("api::rca-assessment.rca-assessment")
+ 
+console.log(isMTF)
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -43,7 +44,9 @@ export default function QuestionPreviewModal() {
 
 
   }, [data])
-  console.log(data)
+
+  console.log(data);
+
 
 
   return (
@@ -141,15 +144,22 @@ export default function QuestionPreviewModal() {
         ) : null
       }
       {
-        // FibPreview
+    
         isCaseBase ? (
           <CaseBasedQuestion isModalOpen={isModalOpen}
-          handleCloseModal={handleCloseModal}
-          curriculumData={curriculumData}/>
+            handleCloseModal={handleCloseModal}
+            curriculumData={curriculumData} />
+        ) : null
+      }
+      {
+        // Rca Preview
+        inRca ? (
+          <RcaAssessment  isModalOpen={isModalOpen}
+          handleCloseModal={handleCloseModal}   curriculumData={curriculumData} />
         ) : null
       }
 
-      
+
 
 
     </div>
